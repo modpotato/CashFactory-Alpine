@@ -1,51 +1,44 @@
-# CashFactory
-Lightweight docker image stack (using docker-compose) running many passive income applications (proxy and bandwidth share) : Honeygain , EarnApp , IPRoyal Pawns , PacketStream , Peer2Profit . 
-Expected raw revenue is around $30-$40 per month (Jan 2022 estimation), 24/7 power cost to deduce.
+### THIS IS NOT WORKING YET DO NOT USE IT
 
-Those tools are using your computer to route traffic, I'm personnally using it running on two different ips (my home connection and my 4G backup connection). Those kind of ip are working well, but I believe this won't be the case on some ips (like vpn for instance). Keep in mind if you have several ip, you can run a stack on each ip to increase revenue, but running several time this stack on same ip should not give you more (and some tools supported won't allow it).
+# CashFactory-Alpine
+Lightweight docker image stack (using docker compose) running many passive income applications (proxy host and bandwidth sharing) : Honeygain, EarnApp, IPRoyal Pawns, PacketStream and Peer2Profit.
+Revenue depends on the quality of your network (mobile gets more, datacenter gets low or none) read more about this [here]().
 
-Installation (you can open www/index.html file to have a more interactive install section) :
+# Installation:
 
-- Install linux OS on your host machine (a low consuming and cheap linux compatible box if you want a dedicated computer) or you can use an already set linux server running 24/7 as this software is very low ressources consuming. 
-- Download CashFactory latest release in $HOME directory : cd $HOME, then : wget https://github.com/OlivierGaland/CashFactory/archive/refs/tags/v1.2.tar.gz , then uncompress : tar -xvf v1.2.tar.gz
-- Edit created directory name to CashFactory and cd inside : mv CashFactory-1.2 CashFactory ; cd CashFactory
-- Run install script (Need to run it as sudo -supervisor-) : sudo ./setup.sh
-- Create an account for the app(s) you want to use (8 app supported : see Registering section below)
-- Update .env file with the account details (put your account informations in defined environment variables)
-- (Optional) If you don't want to use all app : comment or delete the corresponding section in docker-compose.yml
-- Special procedure for Earnapp : you will need to add your device in the dashboard, to get the id use Portainer to open "exec console" on the Earnapp container (or through ssh enter: docker exec -it cashfactory_Earnapp_1 sh) and type : earnapp showid, to add the device you need to enter this link in your browser https://earnapp.com/r/your-id replacing "your-id" with the id you found earlier with show-id.
-- Special procedure for Peer2profit : registration is done using a telegram bot (you need to install telegram application)
-- Special procedure for Bitping : you will need to enter manually credential to initialize (TODO : easiest way ?), in $HOME/CashFactory type : sudo docker run -it -v $HOME/CashFactory/data/bitping/:/root/.bitping bitping/bitping-node:latest , then enter your credential , once this is done CTL-C to end container
-- special procedure for Proxyrack : you will need to add your device uuid (see .env how to generate it) in the dashboard (dashboard -> devices -> add device)
+- Install Alpine on your host machine (im using a container instead) or you can use a linux server running 24/7 as it's light on the cpu. 
+- Download CashFactory into whatever directory you want: `mkdir CashFactory-Alpine && rm -rf ./CashFactory-Alpine/* && wget https://api.github.com/repos/modpotato/CashFactory-Alpine/releases/latest -O - |
+tar -xzvf - -C CashFactory-Alpine`
+- Go into the CashFactory-Alpine folder `cd CashFactory-Alpine`
+- Run install script (`su` to elevate) `ash ./setup.sh`
+- Register for any services you want to use [here](#registration)
+- Update .env to contain your account credentials for each site
+- (Optional) If you don't want or need all availible services, comment them out with `#` in `docker-compose.yml`
+- (ONLY FOR EARNAPP) You need to link your node to your account. To get the id run `docker exec -it cashfactory_Earnapp_1 sh` and type `earnapp showid`. To add the device you need to use this link: https://earnapp.com/r/your-id replacing "your-id" with the id you found earlier with show-id.
+- (ONLY FOR PEER2PROFIT) Registration is done using a telegram bot (you need to install telegram application)
+- (ONLY FOR BITPING) You will need to enter manually credential to initialize (TODO : easier method) in CashFactory-Alpine as root: `docker run -it -v ./data/bitping/:/root/.bitping bitping/bitping-node:latest then enter your login. Once this is done CTL-C to shut the container down
+- (ONLY FOR PROXYRACK) You will need to add your device uuid (see .env how to generate it) in the dashboard (dashboard -> devices -> add device)
 
-Registering section and supported cash earning apps :
+# Registration
 
-This is the list of applications supported (or to be supported) by this docker stack.
-Please, as this software is free, consider using the register link below to create your account for each app, this will add you in my referral list and I will get a reward from this company.
-This won't cost you anything and motivate me to maintain this software by adding new applications and providing support to customers.
+Depending on what you want to run, you will need to register for some of these if not all of them.
 
-- Supported [Register Earnapp](https://earnapp.com/i/p34wpf4)
-- Supported [Register Honeygain](https://r.honeygain.me/GALAN2C368)
-- Supported [Register Peer2profit](https://t.me/peer2profit_app_bot?start=164081436561ccd71d961f2) : Dashboard on telegram
-- Supported [Register IPRoyal Pawns](https://iproyal.com/pawns?r=455236)
-- Supported [Register Packetstream](https://packetstream.io/?psr=32GQ)
-- Supported [Register Traffmonetizer](https://traffmonetizer.com/?aff=52057)
-- Supported [Register Repocket](https://link.repocket.co/qtCj)
-- Supported [Register Proxylite](https://proxylite.ru/?r=S9LZAM24) : Russian app, payable with crypto for non russian citizens.
-- Supported [Register Bitping](https://app.bitping.com?r=XLr65_of) : This tool only pay in crypto (BitcoinSV)
-- Supported [Register Proxyrack](https://peer.proxyrack.com/ref/08e43xzp6ixdutkxgwsf1vytiqbpcinvt2fge2lc)
-- Supported [Register EarnFm](https://earn.fm/ref/OLIVPSSY)
+- Website [Earnapp](https://earnapp.com/i/ibU2gQTb)
+- Website [Honeygain](https://r.honeygain.me/ASTOL59CFB)
+- Telegram Dashboard [Peer2Profit](https://t.me/peer2profit_app_bot?start=1648514898624257521cf97)
+- Website [IPRoyal Pawns](https://pawns.app/?r=modpotato)
+- Website [Packetstream](https://packetstream.io/?psr=32GQ)
+- Website [Traffmonetizer](https://traffmonetizer.com/?aff=52057) TODO: update url
+- Website [Repocket](https://link.repocket.co/bPfa) TODO: update url
+- Website [Proxylite](https://proxylite.ru/?r=UKXG8XMV) - Russian app, payout with crypto for non russian citizens.
+- Website [Bitping](https://app.bitping.com?r=XLr65_of) - This tool only pay in crypto (BitcoinSV) TODO: update url
+- Website [Proxyrack](https://peer.proxyrack.com/ref/08e43xzp6ixdutkxgwsf1vytiqbpcinvt2fge2lc)
+- Website [EarnFm](https://earn.fm/ref/OLIVPSSY)
 
 Start/stop procedure :
 
-- Start stack : sudo docker-compose up -d (in CashFactory directory)
-- Stop stack : sudo docker-compose down (in CashFactory directory)
-
-Day to day management :
-
-- Bookmarks for applications is available on a web interface on host (http server port 80), if you install it on a machine already using port 80 (like a NAS for instance) you must change the Webserver port in docker-compose.yaml from "80:80" to "your_custom_port:80" or the entire stack will fail (as dependent on Webserver)
-- Docker management for container and applications command/log is available on a web interface (Portainer) on host (http server port 9000). A basic knowledge of docker and docker-compose could also be helpfull (how to stop/star specific container, images policy, ssh on a container ...)
-- Container rebuild : In case you need to rebuild the image for a given app (like repocket only for instance ...), easiest way is to go on portainer interface, remove the container of this app (containers panel), then go on images panel and remove the image of the app (exact name can be found in docker-compose.yml). Once this done, just start stack again (sudo docker-compose up -d) : docker compose will just rebuild the removed image, container and start it without altering others apps. 
+- To start stack: `sudo docker compose up -d` (in CashFactory directory)
+- To stop stack: `sudo docker compose down` (in CashFactory directory)
 
 License : 
 
@@ -54,26 +47,9 @@ License :
 
 Compatibility :
 
-- Currently tested and running on a NUC computer with Ubuntu 20.04 server / docker 20.10.12 / docker-compose 1.25.0 ; hardware is N3150 celeron processor (4% load average), 8Gb memory (450 Mb used) and 120Gb disk (10 Gb used) 
-- Should be working on any x86/amd64 computer running Linux+docker with a very basic setup (low end CPU / 1Gb memory / 20Gb disk / 10Mb ethernet adapter)   
-- Other architecture not yet confirmed to be working (Windows / Mac)
-- Confirmed working on ubuntu 20.04 server, 22.04 server 
-- Confirmed actually not working on Raspberry
-- Confirmed working on Synology NAS using VM (ubuntu 20.04 installed)
-- You may experience issues with earnapp if using debian : earnapp container exiting with error 255 (prefer using ubuntu 20.04)
-
-TODO list :
-
-- Add new applications when they appear (should be dockerizable to be elligible)
-- Do a compatibility list based on user feedback / solve compatibility issue if possible
-- Beta version : solve coming bugs
+- TODO: check performance on ct
 
 Contact :
 
-- bugs/requests : this github page (section : Issue or Discussion)
-- email : galand.olivier.david@gmail.com
- 
-Web interface with quick links to dashboards on port 80 (uhttpd server) and Web interface on port 9000 (Portainer container) below :
-
-![image](https://user-images.githubusercontent.com/26048157/197580191-28e02615-adea-4c75-baf2-6917fce92b29.png)
-![image](https://user-images.githubusercontent.com/26048157/147866347-595bfbad-fedf-48a1-8764-e52b6e06bfbe.png)
+- bugs/requests : github issues
+- email : mod@modhost.top
