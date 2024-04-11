@@ -42,9 +42,6 @@ if [ "$setup_now" = "y" ]; then
     read -rp "Earnapp device ID [${EARNAPP_DEVICE_ID}]: " input
     EARNAPP_DEVICE_ID="${input:-$EARNAPP_DEVICE_ID}"
 
-    read -rp "Device name [${DEVICE_NAME}]: " input
-    DEVICE_NAME="${input:-$DEVICE_NAME}"
-
     read -rp "Packetstream CID: " PACKETSTREAM_CID
     read -rp "Traffmonetizer token: " TRAFFMONETIZER_TOKEN
     read -rp "Repocket API key: " RP_API_KEY

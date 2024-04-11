@@ -7,9 +7,8 @@ Revenue depends on the quality of your network (mobile gets more, datacenter get
 # Installation:
 
 - Install Alpine on your host machine (im using a container instead) or you can use a linux server running 24/7 as it's light on the cpu. 
-- Download CashFactory into whatever directory you want: `mkdir CashFactory-Alpine && rm -rf ./CashFactory-Alpine/* && wget https://api.github.com/repos/modpotato/CashFactory-Alpine/releases/latest -O - |
-tar -xzvf - -C CashFactory-Alpine`
-- Go into the CashFactory-Alpine folder `cd CashFactory-Alpine`
+- Download CashFactory into whatever directory you want: `wget https://github.com/modpotato/CashFactory-Alpine/archive/refs/tags/v0.1-pre.tar.gz -O - | tar -xzvf -`
+- Go into the CashFactory-Alpine folder `cd CashFactory-Alpine-(release tag)`
 - Register for any services you want to use [here](#registration)
 - Run install script (`su` to elevate) `ash ./setup.sh`
 - (Optional) If you don't want or need all availible services, comment them out with `#` in `docker-compose.yml`
