@@ -10,9 +10,8 @@ Revenue depends on the quality of your network (mobile gets more, datacenter get
 - Download CashFactory into whatever directory you want: `mkdir CashFactory-Alpine && rm -rf ./CashFactory-Alpine/* && wget https://api.github.com/repos/modpotato/CashFactory-Alpine/releases/latest -O - |
 tar -xzvf - -C CashFactory-Alpine`
 - Go into the CashFactory-Alpine folder `cd CashFactory-Alpine`
-- Run install script (`su` to elevate) `ash ./setup.sh`
 - Register for any services you want to use [here](#registration)
-- Update .env to contain your account credentials for each site
+- Run install script (`su` to elevate) `ash ./setup.sh`
 - (Optional) If you don't want or need all availible services, comment them out with `#` in `docker-compose.yml`
 - (ONLY FOR EARNAPP) You need to link your node to your account. To get the id run `docker exec -it cashfactory_Earnapp_1 sh` and type `earnapp showid`. To add the device you need to use this link: https://earnapp.com/r/your-id replacing "your-id" with the id you found earlier with show-id.
 - (ONLY FOR PEER2PROFIT) Registration is done using a telegram bot (you need to install telegram application)
