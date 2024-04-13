@@ -30,8 +30,8 @@ Depending on what you want to run, you will need to register for some of these i
 - Website [Repocket](https://link.repocket.co/bPfa) TODO: update url
 - Website [Proxylite](https://proxylite.ru/?r=UKXG8XMV) - Russian app, payout with crypto for non russian citizens.
 - Website [Bitping](https://app.bitping.com?r=XLr65_of) - This tool only pay in crypto (BitcoinSV) TODO: update url
-- Website [Proxyrack](https://peer.proxyrack.com/ref/08e43xzp6ixdutkxgwsf1vytiqbpcinvt2fge2lc)
-- Website [EarnFm](https://earn.fm/ref/OLIVPSSY)
+- Website [Proxyrack](https://peer.proxyrack.com/ref/08e43xzp6ixdutkxgwsf1vytiqbpcinvt2fge2lc)  
+- Website [EarnFm](https://earn.fm/ref/MODP9C01)
 
 Start/stop procedure :
 
